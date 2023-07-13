@@ -7,12 +7,12 @@
           <el-input v-model="product.name"></el-input>
         </el-form-item>
         <el-form-item label="Price">
-          <el-input-number v-model="product.price"></el-input-number>
+          <el-input-number v-model="product.price"></el-input-number >
         </el-form-item>
         <el-form-item label="Quantity">
           <el-input-number v-model="product.quantity"></el-input-number>
         </el-form-item>
-        <el-form-item label="Category">
+        <el-form-item label="Category" prop="category">
           <el-select v-model="productCategoryId" placeholder="Select Category">
             <el-option
                 v-for="category in categories"
@@ -52,7 +52,7 @@ export default {
     return {
       productCategoryId: null,
       updateSuccess : false,
-    };
+    }
   },
   computed: {
     ...mapGetters('productStore', ['categories']),
