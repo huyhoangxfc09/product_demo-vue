@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="form-container">
+      <h2>Demo</h2>
       <el-form ref="productForm" :model="product" label-width="100px" class="form">
         <h2>Update Product</h2>
         <el-form-item label="Name" class="el-form-item__label">
