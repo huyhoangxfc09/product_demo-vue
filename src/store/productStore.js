@@ -24,6 +24,7 @@ export const productStore = {
         }
     },
     actions: {
+        // Hiển thị tất cả sản phẩm
         showAllProduct({commit}) {
             apiProduct.getAllProduct().then(response => {
                 commit('setProducts', response.data)
@@ -32,6 +33,7 @@ export const productStore = {
             })
         },
 
+        // Hiển thị category
         showCategories({commit}){
             apiProduct.getAllCategory().then(response =>{
                 commit('setCategories', response.data)
@@ -40,11 +42,19 @@ export const productStore = {
             })
         },
 
+        // Truy xuất sản phẩm theo idProduct
         findProductById({commit}, idProduct){
             apiProduct.getProductById(idProduct).then(response =>{
                 commit('setProduct',response.data)
                 console.log("Product")
                 console.log(response.data)
+            })
+        },
+
+        // Tạo mới/cập nhật sản phẩm
+        saveProduct({commit},product){
+            apiProduct.saveProduct(product).then(response =>{
+                commit('setProduct',response.data)
             })
         }
     }

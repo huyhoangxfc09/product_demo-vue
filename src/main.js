@@ -7,6 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import router from "@/router";
 
 
+
 Vue.config.productionTip = false
 window.axios = axios
 Vue.use(ElementUI)

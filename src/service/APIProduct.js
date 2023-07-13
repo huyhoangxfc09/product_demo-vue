@@ -11,4 +11,7 @@ export  default class ApiProduct{
     getAllCategory(){
         return http.get(`/home/products/categories`)
     }
+    saveProduct(product){
+        return http.post(`/home/products/save`,product)
+    }
 }
