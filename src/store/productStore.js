@@ -21,7 +21,10 @@ export const productStore = {
         },
         setCategories(state, category) {
             state.categories = category;
-        }
+        },
+        setDeleteProduct(state, productId) {
+            state.listProduct = state.listProduct.filter(product => product.id !== productId);
+        },
     },
     actions: {
         // Hiển thị tất cả sản phẩm
@@ -55,6 +58,13 @@ export const productStore = {
         saveProduct({commit},product){
             apiProduct.saveProduct(product).then(response =>{
                 commit('setProduct',response.data)
+            })
+        },
+
+        //Xóa sản phẩm
+        deleteProduct({commit},idProduct){
+            apiProduct.deleteProduct(idProduct).then(response =>{
+               commit('setDeleteProduct',response.data)
             })
         }
     }

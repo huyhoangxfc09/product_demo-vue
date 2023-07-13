@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="form-container">
-      <h2>Demo</h2>
       <el-form ref="productForm" :model="product" label-width="100px" class="form">
         <h2>Update Product</h2>
         <el-form-item label="Name" class="el-form-item__label">
@@ -25,7 +24,7 @@
         </el-form-item>
       </el-form>
       <div class="button-container">
-        <el-button type="primary" @click="updateProduct">Cập nhật</el-button>
+        <el-button type="primary" @click="updateProduct">Update</el-button>
         <el-button type="info" @click="backToHome">Back</el-button>
       </div>
     </div>
@@ -52,7 +51,7 @@ export default {
   data() {
     return {
       productCategoryId: null,
-      // ...
+      updateSuccess : false,
     };
   },
   computed: {
@@ -62,7 +61,7 @@ export default {
   },
   methods: {
     updateProduct() {
-      console.log('Product Update:')
+      console.log('Update Product:')
       console.log(this.product)
       // Tạo đối tượng payload để gửi đi
       const payload = {
@@ -79,13 +78,14 @@ export default {
         status: true
       }
 
+
       this.saveProduct(payload)
           .then(() => {
             Swal.fire({
               icon: 'success',
               title: 'Cập nhật thành công',
               showConfirmButton: false,
-              timer: 1500
+              timer: 3000
             });
           })
           .catch(error => {
@@ -93,10 +93,10 @@ export default {
             // Xử lý lỗi nếu có
           });
     },
-    ...mapActions('productStore', ['showCategories', 'findProductById','saveProduct']),
+    ...mapActions('productStore', ['showCategories', 'findProductById', 'saveProduct']),
     ...mapMutations('productStore', ['setCategories']),
     backToHome() {
-      this.$router.push({name:'PageHome'})
+      this.$router.push({name: 'PageHome'})
     }
   },
   created() {

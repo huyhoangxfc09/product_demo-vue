@@ -14,4 +14,7 @@ export  default class ApiProduct{
     saveProduct(product){
         return http.post(`/home/products/save`,product)
     }
+    deleteProduct(idProduct){
+        return http.delete(`/home/products/delete/${idProduct}`)
+    }
 }

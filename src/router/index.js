@@ -4,7 +4,7 @@ import Router from 'vue-router'
 import UpdateFormProduct from "@/components/UpdateFormProduct.vue";
 import PageHome from "@/components/PageHome.vue";
 import HelloWorld from "@/components/HelloWorld.vue";
-import DemoRouter from "@/components/DemoRouter.vue";
+import CreateFormProduct from "@/components/CreateFormProduct";
 
 Vue.use(Router)
 
@@ -26,9 +26,9 @@ export default new Router({
             component: HelloWorld
         },
         {
-            path: '/router',
-            name: 'DemoRouter',
-            component: DemoRouter
+            path: '/create',
+            name: 'CreateFormProduct',
+            component: CreateFormProduct
         }
     ]
 })
