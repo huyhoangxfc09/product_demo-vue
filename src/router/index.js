@@ -3,7 +3,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import UpdateFormProduct from "@/components/UpdateFormProduct.vue";
 import PageHome from "@/components/PageHome.vue";
-import HelloWorld from "@/components/HelloWorld.vue";
 import CreateFormProduct from "@/components/CreateFormProduct";
 
 Vue.use(Router)
@@ -19,11 +18,6 @@ export default new Router({
             path: '/update/:id',
             name: 'About',
             component: UpdateFormProduct
-        },
-        {
-            path: '/hello',
-            name: 'Hello',
-            component: HelloWorld
         },
         {
             path: '/create',

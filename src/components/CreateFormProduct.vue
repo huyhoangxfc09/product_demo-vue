@@ -47,6 +47,7 @@
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import Swal from "sweetalert2";
+
 export default {
     data(){
       return{
@@ -89,7 +90,7 @@ export default {
             .then(() => {
               Swal.fire({
                 icon: 'success',
-                title: 'Cập nhật thành công',
+                title: 'Lưu thành công',
                 showConfirmButton: false,
                 timer: 1500
               });

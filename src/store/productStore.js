@@ -5,12 +5,14 @@ export const productStore = {
     state: {
         product:{},
         listProduct: [],
-        categories: []
+        categories: [],
+        pageProduct: []
     },
     getters: {
         product: (state) => state.product,
         products: (state) => state.listProduct,
-        categories: (state) => state.categories
+        categories: (state) => state.categories,
+        pageProduct: (state) => state.pageProduct
     },
     mutations: {
         setProduct(state, product){
@@ -25,6 +27,9 @@ export const productStore = {
         setDeleteProduct(state, productId) {
             state.listProduct = state.listProduct.filter(product => product.id !== productId);
         },
+        setPageProduct(state, pageProduct){
+            state.pageProduct = pageProduct;
+        }
     },
     actions: {
         // Hiển thị tất cả sản phẩm
@@ -47,11 +52,19 @@ export const productStore = {
 
         // Truy xuất sản phẩm theo idProduct
         findProductById({commit}, idProduct){
-            apiProduct.getProductById(idProduct).then(response =>{
-                commit('setProduct',response.data)
-                console.log("Product")
-                console.log(response.data)
-            })
+            // apiProduct.getProductById(idProduct).then(response =>{
+            //     commit('setProduct',response.data)
+            // })
+            return  new Promise((resolve, reject) => {
+                apiProduct.getProductById(idProduct)
+                    .then(response => {
+                        commit('setProduct', response.data);
+                        resolve(response.data); // Resolve with the response data
+                    })
+                    .catch(error => {
+                        reject(error);
+                    });
+            });
         },
 
         // Tạo mới/cập nhật sản phẩm
@@ -65,6 +78,15 @@ export const productStore = {
         deleteProduct({commit},idProduct){
             apiProduct.deleteProduct(idProduct).then(response =>{
                commit('setDeleteProduct',response.data)
+            })
+        },
+
+        // Phân trang
+        pageShowAllProduct({commit}){
+          return apiProduct.getPageAllProduct().then(response =>{
+                commit('setPageProduct', response.data.content)
+                console.log("Page Product")
+                console.log(response.data)
             })
         }
     }

@@ -17,4 +17,7 @@ export  default class ApiProduct{
     deleteProduct(idProduct){
         return http.delete(`/home/products/delete/${idProduct}`)
     }
+    getPageAllProduct(){
+        return http.get(`/home/products/pages`)
+    }
 }
